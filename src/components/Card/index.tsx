@@ -17,7 +17,7 @@ const Card = () => {
       <textarea className='dis_input' id='body' defaultValue={Lorem}></textarea>
       <div className={styles.card_but_container}>
         <label>Color Change: </label>
-        <input type='checkbox' name='check' value='true' onChange={() => checkhandler()} />
+        <input type='checkbox' name='check' value='true' onChange={checkhandler} />
       </div>
     </div>
   );
