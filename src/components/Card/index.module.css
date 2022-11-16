@@ -50,6 +50,10 @@
     font-size: 30px;
 }
 
+.bigger {
+    font-size: 40px;
+}
+
 .hidden {
     display: none;
 }
