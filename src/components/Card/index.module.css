@@ -1,6 +1,6 @@
 .card_container {
-    width: 500px;
-    height: 300px;
+    width: 30.25rem;
+    height: 25rem;
     background-color: var(--light-blue);
     position: relative;
     display: flex;
