@@ -1,9 +1,10 @@
-
+import React from "react";
+import Card from "../components/Card";
 
 export default function Home() {
   return (
-    <div>
-        Vensan Project Start
-    </div>
-  )
+    <>
+      <Card />
+    </>
+  );
 }
