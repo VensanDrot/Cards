@@ -12,16 +12,16 @@ const Card = () => {
   const [edit, SetEdit] = useState(false);
   const [header, SetHeader] = useState<string | undefined>(Lorem);
   const [body, SetBody] = useState<string | undefined>(Lorem);
-  const [Oldheader, SetOldHeader] = useState<string | undefined>();
-  const [Oldbody, SetOldBody] = useState<string | undefined>();
+  const [oldHeader, SetOldHeader] = useState<string | undefined>();
+  const [oldBody, SetOldBody] = useState<string | undefined>();
 
   //checker
-  const checkhandler = () => {
+  const checkHandler = () => {
     SetCheck(!check);
   };
 
   //Start the edition proccess
-  const edithandler = () => {
+  const editHandler = () => {
     SetEdit(!edit);
     SetOldBody(body);
     SetOldHeader(header);
@@ -29,9 +29,8 @@ const Card = () => {
       SetCheck(!check);
     }
     if (edit) {
-      console.log("here");
-      SetBody(Oldbody);
-      SetHeader(Oldheader);
+      SetBody(oldBody);
+      SetHeader(oldHeader);
     }
   };
 
@@ -41,12 +40,12 @@ const Card = () => {
   };
 
   //header text change handle
-  const headerhandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const headerHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     SetHeader(e.target.value);
   };
 
   //body text change handle
-  const bodyhandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const bodyHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     SetBody(e.target.value);
   };
 
@@ -57,16 +56,16 @@ const Card = () => {
 
   return (
     <div className={`${check && styles.card_cont_active} ${styles.card_container} `}>
-      <button className={`${styles.editor} ${styles.save}`} onClick={edithandler}>
+      <button className={`${styles.editor} ${styles.save}`} onClick={editHandler}>
         {replacer()}
       </button>
       <label>Header:</label>
-      <textarea className='dis_input' onChange={(e) => headerhandler(e)} value={header} readOnly={!edit}></textarea>
+      <textarea className='dis_input' onChange={(e) => headerHandler(e)} value={header} readOnly={!edit}></textarea>
       <label>Body:</label>
-      <textarea className='dis_input' onChange={(e) => bodyhandler(e)} value={body} readOnly={!edit}></textarea>
-      <div className={`${edit ? styles.hidden : styles.smth} ${styles.card_but_container}`}>
+      <textarea className='dis_input' onChange={(e) => bodyHandler(e)} value={body} readOnly={!edit}></textarea>
+      <div className={`${edit && styles.hidden} ${styles.card_but_container}`}>
         <label>Color Change: </label>
-        <input type='checkbox' name='check' value='true' onChange={checkhandler} checked={edit ? false : check} />
+        <input type='checkbox' name='check' value='true' onChange={checkHandler} checked={edit ? false : check} />
       </div>
 
       <div className={`${!edit && styles.hidden} ${styles.card_but_container}`}>
