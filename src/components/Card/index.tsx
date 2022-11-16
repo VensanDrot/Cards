@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import styles from "./index.module.css";
 import { BsPencilSquare } from "react-icons/bs";
 import { ImCross } from "react-icons/im";
@@ -11,7 +11,6 @@ const Card = () => {
   const [edit, SetEdit] = useState(false);
   const [header, SetHeader] = useState(Lorem);
   const [body, SetBody] = useState(Lorem);
-  const ref = useRef(null);
 
   const checkhandler = () => {
     SetCheck(!check);
@@ -19,7 +18,7 @@ const Card = () => {
 
   const edithandler = () => {
     SetEdit(!edit);
-    if (check === true) {
+    if (check) {
       SetCheck(!check);
     }
   };
@@ -34,9 +33,9 @@ const Card = () => {
         {replacer()}
       </button>
       <label>Header:</label>
-      <textarea className='dis_input' value={Lorem} readOnly={edit ? false : true}></textarea>
+      <textarea className='dis_input' value={Lorem} readOnly={!edit}></textarea>
       <label>Body:</label>
-      <textarea className='dis_input' value={Lorem} readOnly={edit ? false : true}></textarea>
+      <textarea className='dis_input' value={Lorem} readOnly={!edit}></textarea>
       <div className={`${edit ? styles.hidden : styles.smth} ${styles.card_but_container}`}>
         <label>Color Change: </label>
         <input type='checkbox' name='check' value='true' onChange={checkhandler} checked={edit ? false : check} />
