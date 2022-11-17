@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import styles from "./index.module.css";
+import Header from "./Header";
+import Body from "./Body";
+import Buttons from "./Buttons";
 import { BsPencilSquare } from "react-icons/bs";
 import { ImCross } from "react-icons/im";
-import { AiOutlineSave } from "react-icons/ai";
+
+import Head from "next/head";
 
 const Card = () => {
   //elememts
@@ -11,7 +15,7 @@ const Card = () => {
   const [check, setCheck] = useState(false);
   const [edit, setEdit] = useState(false);
   const [header, setHeader] = useState<string | undefined>(Lorem);
-  const [body,setBody] = useState<string | undefined>(Lorem);
+  const [body, setBody] = useState<string | undefined>(Lorem);
   const [oldHeader, setOldHeader] = useState<string | undefined>();
   const [oldBody, setOldBody] = useState<string | undefined>();
 
@@ -56,23 +60,9 @@ const Card = () => {
 
   return (
     <div className={`${check && styles.card_cont_active} ${styles.card_container} `}>
-      <button className={`${styles.editor} ${styles.save}`} onClick={editHandler}>
-        {replacer()}
-      </button>
-      <label>Header:</label>
-      <textarea className='dis_input' onChange={headerHandler} value={header} readOnly={!edit}></textarea>
-      <label>Body:</label>
-      <textarea className='dis_input' onChange={bodyHandler} value={body} readOnly={!edit}></textarea>
-      <div className={`${edit && styles.hidden} ${styles.card_but_container}`}>
-        <label>Color Change: </label>
-        <input type='checkbox' name='check' value='true' onChange={checkHandler} checked={edit ? false : check} />
-      </div>
-
-      <div className={`${!edit && styles.hidden} ${styles.card_but_container}`}>
-        <button className={`${styles.save} ${styles.bigger}`} onClick={save}>
-          <AiOutlineSave />
-        </button>
-      </div>
+      <Header headerHandler={headerHandler} header={header} edit={edit} />
+      <Body bodyHandler={bodyHandler} checkHandler={checkHandler} body={body} edit={edit} check={check} />
+      <Buttons replacer={replacer} editHandler={editHandler} save={save} edit={edit} check={check} />
     </div>
   );
 };
