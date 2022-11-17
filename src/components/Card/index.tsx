@@ -8,29 +8,29 @@ const Card = () => {
   //elememts
   const Lorem =
     "HEE adipisicing elit. Sunt harum accusamus iure temporibus quas quasi voluptate quaerat quae, explicabo ducimus autem consectetur aliquam velit praesentium ut cupiditate dolore, similique rem!";
-  const [check, SetCheck] = useState(false);
-  const [edit, SetEdit] = useState(false);
-  const [header, SetHeader] = useState<string | undefined>(Lorem);
-  const [body, SetBody] = useState<string | undefined>(Lorem);
-  const [oldHeader, SetOldHeader] = useState<string | undefined>();
-  const [oldBody, SetOldBody] = useState<string | undefined>();
+  const [check, setCheck] = useState(false);
+  const [edit, setEdit] = useState(false);
+  const [header, setHeader] = useState<string | undefined>(Lorem);
+  const [body,setBody] = useState<string | undefined>(Lorem);
+  const [oldHeader, setOldHeader] = useState<string | undefined>();
+  const [oldBody, setOldBody] = useState<string | undefined>();
 
   //checker
   const checkHandler = () => {
-    SetCheck(!check);
+    setCheck(!check);
   };
 
   //Start the edition proccess
   const editHandler = () => {
-    SetEdit(!edit);
-    SetOldBody(body);
-    SetOldHeader(header);
+    setEdit(!edit);
+    setOldBody(body);
+    setOldHeader(header);
     if (check) {
-      SetCheck(!check);
+      setCheck(!check);
     }
     if (edit) {
-      SetBody(oldBody);
-      SetHeader(oldHeader);
+      setBody(oldBody);
+      setHeader(oldHeader);
     }
   };
 
@@ -41,17 +41,17 @@ const Card = () => {
 
   //header text change handle
   const headerHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    SetHeader(e.target.value);
+    setHeader(e.target.value);
   };
 
   //body text change handle
   const bodyHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    SetBody(e.target.value);
+    setBody(e.target.value);
   };
 
   //save changes
   const save = () => {
-    SetEdit(!edit);
+    setEdit(!edit);
   };
 
   return (
@@ -60,9 +60,9 @@ const Card = () => {
         {replacer()}
       </button>
       <label>Header:</label>
-      <textarea className='dis_input' onChange={(e) => headerHandler(e)} value={header} readOnly={!edit}></textarea>
+      <textarea className='dis_input' onChange={headerHandler} value={header} readOnly={!edit}></textarea>
       <label>Body:</label>
-      <textarea className='dis_input' onChange={(e) => bodyHandler(e)} value={body} readOnly={!edit}></textarea>
+      <textarea className='dis_input' onChange={bodyHandler} value={body} readOnly={!edit}></textarea>
       <div className={`${edit && styles.hidden} ${styles.card_but_container}`}>
         <label>Color Change: </label>
         <input type='checkbox' name='check' value='true' onChange={checkHandler} checked={edit ? false : check} />
