@@ -62,7 +62,7 @@ const Card = () => {
     <div className={`${check && styles.card_cont_active} ${styles.card_container} `}>
       <Header headerHandler={headerHandler} header={header} edit={edit} />
       <Body bodyHandler={bodyHandler} checkHandler={checkHandler} body={body} edit={edit} check={check} />
-      <Buttons replacer={replacer} editHandler={editHandler} save={save} edit={edit} check={check} />
+      <Buttons replacer={replacer} editHandler={editHandler} save={save} edit={edit} />
     </div>
   );
 };

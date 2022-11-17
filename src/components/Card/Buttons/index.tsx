@@ -7,7 +7,6 @@ interface IProps {
   editHandler: () => void;
   save: () => void;
   edit: boolean;
-  check: boolean;
 }
 
 const Buttons: FC<IProps> = ({ replacer, editHandler, save, edit }) => {
