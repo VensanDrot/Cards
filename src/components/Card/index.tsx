@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 import styles from "./index.module.css";
 import Header from "./Header";
 import Body from "./Body";
@@ -6,16 +6,18 @@ import Buttons from "./Buttons";
 import { BsPencilSquare } from "react-icons/bs";
 import { ImCross } from "react-icons/im";
 
-import Head from "next/head";
+interface IProps {
+  header_text: string;
+  body_text: string | undefined;
+  id: number;
+}
 
-const Card = () => {
+const Card: FC<IProps> = ({ header_text, body_text, id }) => {
   //elememts
-  const Lorem =
-    "HEE adipisicing elit. Sunt harum accusamus iure temporibus quas quasi voluptate quaerat quae, explicabo ducimus autem consectetur aliquam velit praesentium ut cupiditate dolore, similique rem!";
   const [check, setCheck] = useState(false);
   const [edit, setEdit] = useState(false);
-  const [header, setHeader] = useState<string | undefined>(Lorem);
-  const [body, setBody] = useState<string | undefined>(Lorem);
+  const [header, setHeader] = useState<string | undefined>(header_text);
+  const [body, setBody] = useState<string | undefined>(body_text);
   const [oldHeader, setOldHeader] = useState<string | undefined>();
   const [oldBody, setOldBody] = useState<string | undefined>();
 
@@ -59,7 +61,7 @@ const Card = () => {
   };
 
   return (
-    <div className={`${check && styles.card_cont_active} ${styles.card_container} `}>
+    <div key={id} className={`${check && styles.card_cont_active} ${styles.card_container} `}>
       <Header headerHandler={headerHandler} header={header} edit={edit} />
       <Body bodyHandler={bodyHandler} checkHandler={checkHandler} body={body} edit={edit} check={check} />
       <Buttons replacer={replacer} editHandler={editHandler} save={save} edit={edit} />
