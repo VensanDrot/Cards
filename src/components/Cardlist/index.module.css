@@ -1,0 +1,6 @@
+.card_list{
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
