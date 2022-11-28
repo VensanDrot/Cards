@@ -9,10 +9,9 @@ import { ImCross } from "react-icons/im";
 interface IProps {
   header_text: string;
   body_text: string | undefined;
-  id: number;
 }
 
-const Card: FC<IProps> = ({ header_text, body_text, id }) => {
+const Card: FC<IProps> = ({ header_text, body_text }) => {
   //elememts
   const [check, setCheck] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -61,7 +60,7 @@ const Card: FC<IProps> = ({ header_text, body_text, id }) => {
   };
 
   return (
-    <div key={id} className={`${check && styles.card_cont_active} ${styles.card_container} `}>
+    <div className={`${check && styles.card_cont_active} ${styles.card_container} `}>
       <Header headerHandler={headerHandler} header={header} edit={edit} />
       <Body bodyHandler={bodyHandler} checkHandler={checkHandler} body={body} edit={edit} check={check} />
       <Buttons replacer={replacer} editHandler={editHandler} save={save} edit={edit} />

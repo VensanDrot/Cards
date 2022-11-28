@@ -11,12 +11,14 @@ interface IProps {
 }
 
 const CardList: FC<IProps> = ({ data }) => {
-  console.log(data);
   return (
     <div className={styles.card_list}>
       {data.map((e) => {
-        console.log(e.id);
-        return <Card key={e.id} header_text={e.header_text} body_text={e.body_text} id={e.id} />;
+        return (
+          <div key={e.id}>
+            <Card header_text={e.header_text} body_text={e.body_text} />
+          </div>
+        );
       })}
     </div>
   );
